@@ -19,5 +19,12 @@ jobs:
         architecture: x64
     - name: Install python package
       run: pip install maturin
+    - uses: actions-rs/toolchain@v1
+      name: "Setup rust toolchain"
+      with:
+        profile: minimal
+        toolchain: nightly
+        override: "true"
+        components: rustfmt, clippy
     - name: Maturin build
       run: maturin build
